@@ -1,3 +1,13 @@
+# ClickD
+Adds a click-based decorator that allows you to specify the directory with all the files being the subcommands/groups; and allows nesting the decorator--in the subdirectories' init-files--to traverse a directory tree for a quicker and cleaner cli-code layout.
+
+## Install
+```
+pip install clickd
+```
+
+## Usage
+
 Decorate the top-level--and all directory-modules' \_\_init\_\_ under--with the `clickd` 
 decorator.
 
@@ -37,20 +47,20 @@ decorator.
         __init__.cpython-312.pyc
 ```
 
-The `__init__.py` files will contain `@clickd(dirp=/path/to/this/inits/folder)`; for e.g.,
+The `__init__.py` files will contain `@clickd(dirp=./clickd/tests/cli/<folder>)`; for e.g.,
 `h/__init__.py` will have:
 ```
 from clickd import clickd
 
-@clickd(dpath="./tests/cli/e/h")
+@clickd(dpath="./clickd/tests/cli/e/h")
 def h():
     pass
 ```
 
-And all the init-files in `./tests/cli/e/h` (and `./tests/cli/e`, and `./tests/cli`, for that matter) will have this set-up; every `click.Group` that I want to automatically load
+And all the init-files in `./clickd/tests/cli/e/h` (and `./clickd/tests/cli/e`, and `./clickd/tests/cli`, for that matter) will have this set-up; every `click.Group` that I want to automatically load
 subcommands as individual files from. 
 
-The subcommands will, for e.g., look like this (in this case `./test/cli/e/h/k.py`):
+The subcommands will, for e.g., look like this (in this case `./clickd/tests/cli/e/h/k.py`):
 ```
 import click
 
