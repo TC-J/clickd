@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "clickd"
-version = "0.1.0"
+version = "0.1.1"
 description = "Click group wrapper for loading click commands from separate files."
 authors = ["Tyler Curtis Jowers <jowerstc@outlook.com>"]
 readme = "README.md"
